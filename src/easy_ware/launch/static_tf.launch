@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="world_to_map" args="304104.18053647294 3900115.7654250246 0 -1.195 0 0 world map" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="localizer_to_base_link1" args="0.9 0 0 0 0 0 base_link front_wheel"/>
+</launch>
+

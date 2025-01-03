@@ -1,0 +1,69 @@
+import tkinter
+import subprocess
+
+class CheckboxWithProcess(tkinter.Checkbutton):
+    def __init__(self, master=None, script=None, **kwargs):
+        super().__init__(master, **kwargs)
+        self.process = None
+        self.script = script
+        self.variable = tkinter.BooleanVar()
+        self.config(variable=self.variable, command=self.on_checkbox_click)
+    
+    def on_checkbox_click(self):
+        if self.variable.get():
+            print(f"Checkbox for {self.script} is checked")
+            # Run the python script
+            self.process = subprocess.Popen(["python", self.script])
+        else:
+            print(f"Checkbox for {self.script} is unchecked")
+            # Terminate the process if it exists
+            if self.process:
+                self.process.terminate()
+
+def create_colored_frame(master, color):
+    frame = tkinter.Frame(master, highlightbackground=color, highlightthickness=2)
+    frame.pack(padx=5, pady=5, fill="both", expand=False)
+    return frame
+
+window = tkinter.Tk()
+window.title("Easyware")
+window.geometry("640x400+100+100")
+window.resizable(False, False)
+
+# Frame for the Mapping Algorithm checkboxes
+mapping_frame = create_colored_frame(window, "gray")
+
+# Set the title of the Mapping Algorithm frame
+mapping_title_label = tkinter.Label(mapping_frame, text="Mapping Algorithm", font=("Arial", 14, "bold"))
+mapping_title_label.grid(row=0, column=1, sticky="w")
+
+checkbox1 = CheckboxWithProcess(mapping_frame, text="Process 1", script="pure_pursuit.py")
+checkbox1.grid(row=1, column=0)
+
+checkbox2 = CheckboxWithProcess(mapping_frame, text="Process 2", script="pure_pursuit.py")
+checkbox2.grid(row=1, column=1)
+
+checkbox3 = CheckboxWithProcess(mapping_frame, text="Process 3", script="pure_pursuit.py")
+checkbox3.grid(row=1, column=2)
+
+# Frame for the Localization Algorithm checkboxes
+localization_frame = create_colored_frame(window, "gray")
+
+# Set the title of the Localization Algorithm frame
+localization_title_label = tkinter.Label(localization_frame, text="Localization Algorithm", font=("Arial", 14, "bold"))
+localization_title_label.grid(row=2, column=1, sticky="w")
+
+checkbox4 = CheckboxWithProcess(localization_frame, text="Process 4", script="localization.py")
+checkbox4.grid(row=3, column=0)
+
+checkbox5 = CheckboxWithProcess(localization_frame, text="Process 5", script="localization.py")
+checkbox5.grid(row=3, column=1)
+
+checkbox6 = CheckboxWithProcess(localization_frame, text="Process 6", script="localization.py")
+checkbox6.grid(row=3, column=2)
+
+# Frame for the 
+localization_frame = create_colored_frame(window, "gray")
+
+
+window.mainloop()

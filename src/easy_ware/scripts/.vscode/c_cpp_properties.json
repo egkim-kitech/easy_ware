@@ -1,0 +1,46 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/bjg/fast_lio_ws/devel/include/**",
+        "/home/bjg/Downloads/ws_livox/devel/include/**",
+        "/home/bjg/hdl_slam_ws/devel/include/**",
+        "/home/bjg/ew_ws/devel/include/**",
+        "/home/bjg/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/bjg/catkin_ws/src/basic_dynamic_reconfigure_tutorial/include/**",
+        "/home/bjg/catkin_ws/src/beginner_tutorials/include/**",
+        "/home/bjg/ew_ws/src/easy_ware/include/**",
+        "/home/bjg/hdl_slam_ws/src/fast_gicp/include/**",
+        "/home/bjg/fast_lio_ws/src/FAST_LIO/include/**",
+        "/home/bjg/ew_ws/src/gps_common/include/**",
+        "/home/bjg/hdl_slam_ws/src/hdl_graph_slam/include/**",
+        "/home/bjg/ew_ws/src/ndt_localizer/include/**",
+        "/home/bjg/hdl_slam_ws/src/ndt_omp/include/**",
+        "/home/bjg/ew_ws/src/pointcloud_concatenate/include/**",
+        "/home/bjg/catkin_ws/src/sub_sensor/include/**",
+        "/home/bjg/catkin_ws/src/taeyoon/include/**",
+        "/home/bjg/ew_ws/src/ublox/ublox_gps/include/**",
+        "/home/bjg/ew_ws/src/ublox/ublox_msg_filters/include/**",
+        "/home/bjg/ew_ws/src/ublox/ublox_msgs/include/**",
+        "/home/bjg/ew_ws/src/ublox/ublox_serialization/include/**",
+        "/home/bjg/ew_ws/src/velodyne/velodyne_driver/include/**",
+        "/home/bjg/ew_ws/src/velodyne/velodyne_laserscan/include/**",
+        "/home/bjg/ew_ws/src/velodyne/velodyne_pcl/include/**",
+        "/home/bjg/ew_ws/src/velodyne/velodyne_pointcloud/include/**",
+        "/home/bjg/ew_ws/src/voxel_filter/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

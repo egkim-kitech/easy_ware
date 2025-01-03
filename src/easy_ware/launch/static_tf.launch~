@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="world_to_map" args="304071.18053647294 3900119.2654250246 0 0.2871 0 0 world map" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="localizer_to_base_link1" args="1 0 0 0 0 0 base_link lidar1"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="localizer_to_base_link2" args="-3 0 0 3.14 0 0 base_link lidar2"/>
+</launch>

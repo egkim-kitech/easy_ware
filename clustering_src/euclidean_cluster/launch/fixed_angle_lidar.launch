@@ -1,0 +1,8 @@
+<launch>
+    <node name="fixed_angle_lidar" pkg="euclidean_cluster" type="fixed_angle_lidar" output="screen">
+        <!-- 여기서 z 값과 roll 각도를 설정합니다 -->
+        <param name="z_value" value="1.5" />
+        <param name="p_angle" value="30.0" />
+    </node>
+</launch>
+

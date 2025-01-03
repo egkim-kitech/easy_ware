@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+import rospy
+import sys
+import os
+import tf
+from geometry_msgs.msg import PoseWithCovarianceStamped
+from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import PointStamped
+from geometry_msgs.msg import Vector3
+
+
+class EasySimulationNode:
+  def __init__(self):
+      #init node
+      rospy.init_node('easy_simulation_node')
+      self.pub=rospy.Publisher('easy_simulation_pose', PoseStamped, queue_size=10)
+      rospy.Subscriber('/initialpose', PoseWithCovarianceStamped, self.posecallback)
+    
+  def posecallback(self, msg):
+      # receive topic /initialpose and publish rviz marker with geometry_msgs/PoseStamped
+      pose_stamped = PoseStamped()
+      pose_stamped.header.stamp = rospy.Time.now()
+      pose_stamped.header.frame_id = "map"
+      pose_stamped.pose.position.x = msg.pose.pose.position.x
+      pose_stamped.pose.position.y = msg.pose.pose.position.y
+      pose_stamped.pose.position.z = msg.pose.pose.position.z
+      pose_stamped.pose.orientation.x = msg.pose.pose.orientation.x
+      pose_stamped.pose.orientation.y = msg.pose.pose.orientation.y
+      pose_stamped.pose.orientation.z = msg.pose.pose.orientation.z
+      pose_stamped.pose.orientation.w = msg.pose.pose.orientation.w
+      self.pub.publish(pose_stamped)
+
+        
+def main():
+  easysimnode = EasySimulationNode()
+  try:
+      rospy.spin()
+  except rospy.ROSInterruptException:
+      pass
+
+
+if __name__ == "__main__":
+    # run main function and exit
+    sys.exit(main())
