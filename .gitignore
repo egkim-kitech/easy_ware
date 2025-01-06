@@ -1,2 +1,5 @@
 build
 devel
+.git
+.github
+.catkin_workspace
