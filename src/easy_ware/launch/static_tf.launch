@@ -1,10 +1,13 @@
 <launch>
     <node pkg="tf2_ros" type="static_transform_publisher" name="world_to_map" args="304104.18053647294 3900115.7654250246 0 -1.195 0 0 world map" />
-    <node pkg="tf2_ros" type="static_transform_publisher" name="base_link1_to_front_wheel" args="0.9 0 0 0 0 0 base_link front_wheel"/>
-    <node pkg="tf2_ros" type="static_transform_publisher" name="base_link1_to_rear_wheel" args="-0.3 0 0 0 0 0 base_link rear_wheel"/>
-    <node pkg="tf2_ros" type="static_transform_publisher" name="front_wheel_to_fl_wheel" args="0 -0.1 0 0 0 0 front_wheel front_left_wheel"/>
-    <node pkg="tf2_ros" type="static_transform_publisher" name="front_wheel_to_fr_wheel" args="0 0.1 0 0 0 0 front_wheel front_right_wheel"/>
-    <node pkg="tf2_ros" type="static_transform_publisher" name="rear_wheel_to_rl_wheel" args="0 -0.1 0 0 0 0 rear_wheel rear_left_wheel"/>
-    <node pkg="tf2_ros" type="static_transform_publisher" name="rear_wheel_to_rr_wheel" args="0 0.1 0 0 0 0 rear_wheel rear_right_wheel"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_front_wheel" args="0.69 0 -0.43 0 0 0 base_link front_wheel"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_rear_wheel" args="-0.19 0 -0.43 0 0 0 base_link rear_wheel"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_lidar" args="-0.2 0 1.03 0 0.47 0 base_link lidar"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_camera" args="-0.1 0 0.92 0 0 0 base_link camera"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_gps" args="-0.1 0 1.0 0 0 0 base_link gps"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="front_wheel_to_fl_wheel" args="0 -0.37 0 0 0 1.57 front_wheel front_left_wheel"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="front_wheel_to_fr_wheel" args="0 0.37 0 0 0 -1.57 front_wheel front_right_wheel"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="rear_wheel_to_rl_wheel" args="0 -0.37 0 0 0 1.57 rear_wheel rear_left_wheel"/>
+    <node pkg="tf2_ros" type="static_transform_publisher" name="rear_wheel_to_rr_wheel" args="0 0.37 0 0 0 -1.57 rear_wheel rear_right_wheel"/>
 </launch>
 
