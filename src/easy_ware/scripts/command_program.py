@@ -61,7 +61,7 @@ def select_rosbag_file():
             yaml.dump({"selected_rosbag_file": selected_rosbag_file}, yaml_file)
 
 window = tkinter.Tk()
-window.title("Easyware")
+window.title("Command_program")
 window.geometry("700x400+100+100")
 window.resizable(True, True)
 
@@ -80,62 +80,83 @@ except FileNotFoundError:
     print("not found yaml")
     pass
 
-# Frame for the Mapping Algorithm checkboxes
-mapping_frame = create_colored_frame(window, "gray")
+# Frame for the Prepare Algorithm checkboxes
+prepare_frame = create_colored_frame(window, "gray")
 
-# Set the title of the Mapping Algorithm frame
-mapping_title_label = tkinter.Label(mapping_frame, text="Prepare operation", font=("Arial", 14, "bold"))
-mapping_title_label.grid(row=0, column=1, sticky="w")
+# Set the title of the Prepare Algorithm frame
+prepare_title_label = tkinter.Label(prepare_frame, text="Prepare operation", font=("Arial", 14, "bold"))
+prepare_title_label.grid(row=0, column=1, sticky="w")
 
-checkbox1 = CheckboxWithProcess(mapping_frame, text="Static_TF", node="easy_ware", script="static_tf.launch")
+checkbox1 = CheckboxWithProcess(prepare_frame, text="Static_TF", node="easy_ware", script="static_tf.launch")
 checkbox1.grid(row=1, column=0)
 
-checkbox2 = CheckboxWithProcess(mapping_frame, text="UBlox", node="ublox_utils", script="ublox.launch")
+checkbox2 = CheckboxWithProcess(prepare_frame, text="livox_frame_connect", node="easy_ware", script="livox_base_connect.py")
 checkbox2.grid(row=1, column=1)
 
-checkbox3 = CheckboxWithProcess(mapping_frame, text="GPS_common", node="gps_common", script="utm_odometry_node")
+checkbox3 = CheckboxWithProcess(prepare_frame, text="can_start", node="easy_ware", script="can_start.py")
 checkbox3.grid(row=1, column=2)
 
-checkbox3_1 = CheckboxWithProcess(mapping_frame, text="livox_activate", node="livox_ros_driver2", script="rviz_MID360.launch")
-checkbox3_1.grid(row=1, column=3)
-
-checkbox3_2 = CheckboxWithProcess(mapping_frame, text="livox_frame_connect", node="easy_ware", script="livox_base_connect.py")
-checkbox3_2.grid(row=1, column=4)
-
-checkbox3_3 = CheckboxWithProcess(mapping_frame, text="can_transfer", node="easy_ware", script="can_control.py")
-checkbox3_3.grid(row=1, column=5)
-
-# Frame for the rviz checkboxes
-rviz_frame = create_colored_frame(window, "gray")
-
-rviz_title_label = tkinter.Label(rviz_frame, text="Visualization", font=("Arial", 14, "bold"))
-rviz_title_label.grid(row=0, column=1, sticky="w")
-
-checkbox4 = CheckboxWithProcess(rviz_frame, text="hdl_launcher", node="hdl_localization", script="hdl_localization.launch")
-checkbox4.grid(row=2, column=0)
-
-checkbox4_1 = CheckboxWithProcess(rviz_frame, text="hdl_Rviz_launcher", node="easy_ware", script="hdl_rviz.launch")
-checkbox4_1.grid(row=2, column=1)
+checkbox4 = CheckboxWithProcess(prepare_frame, text="can_transfer", node="easy_ware", script="can_control.py")
+checkbox4.grid(row=1, column=3)
 
 
-# Frame for the Localization Algorithm checkboxes
+checkbox5 = CheckboxWithProcess(prepare_frame, text="Vector_Map_Loader", node="easy_ware", script="osm.launch")
+checkbox5.grid(row=2, column=1)
+
+checkbox6 = CheckboxWithProcess(prepare_frame, text="Node_Pump", node="easy_ware", script="node_pump0.py")
+checkbox6.grid(row=2, column=2)
+
+
+
+
+
+# Frame for the sensor Algorithm checkboxes
+sensor_frame = create_colored_frame(window, "gray")
+
+# Set the title of the seonsor Algorithm frame
+mapping_title_label = tkinter.Label(sensor_frame, text="Sensor", font=("Arial", 14, "bold"))
+mapping_title_label.grid(row=0, column=1, sticky="w")
+
+checkbox7 = CheckboxWithProcess(sensor_frame, text="UBlox(gps)", node="ublox_utils", script="ublox.launch")
+checkbox7.grid(row=1, column=1)
+
+checkbox8 = CheckboxWithProcess(sensor_frame, text="GPS_common(gps)", node="gps_common", script="utm_odometry_node")
+checkbox8.grid(row=1, column=2)
+
+checkbox9 = CheckboxWithProcess(sensor_frame, text="livox_activate(lidar/imu)", node="livox_ros_driver2", script="rviz_MID360.launch")
+checkbox9.grid(row=1, column=3)
+
+
+
+# Frame for the localization checkboxes
 localization_frame = create_colored_frame(window, "gray")
 
+rviz_title_label = tkinter.Label(localization_frame, text="Localization", font=("Arial", 14, "bold"))
+rviz_title_label.grid(row=0, column=1, sticky="w")
+
+checkbox10 = CheckboxWithProcess(localization_frame, text="hdl_launcher", node="hdl_localization", script="hdl_localization.launch")
+checkbox10.grid(row=2, column=0)
+
+checkbox11 = CheckboxWithProcess(localization_frame, text="hdl_Rviz_launcher", node="easy_ware", script="hdl_rviz.launch")
+checkbox11.grid(row=2, column=1)
+
+checkbox12 = CheckboxWithProcess(localization_frame, text="Initial_position", node="easy_ware", script="initial_local_find.py")
+checkbox12.grid(row=2, column=2)
+
+
+
+# Frame for the mapping Algorithm checkboxes
+mapping_frame = create_colored_frame(window, "gray")
+
 # Set the title of the Localization Algorithm frame
-localization_title_label = tkinter.Label(localization_frame, text="Localization Algorithm", font=("Arial", 14, "bold"))
+localization_title_label = tkinter.Label(mapping_frame, text="Mapping", font=("Arial", 14, "bold"))
 localization_title_label.grid(row=2, column=1, sticky="w")
 
-checkbox7 = CheckboxWithProcess(localization_frame, text="Vector_Map_Loader", node="easy_ware", script="osm.launch")
-checkbox7.grid(row=3, column=2)
+checkbox13 = CheckboxWithProcess(mapping_frame, text="fast_lio", node="fast_lio", script="mapping_mid360.launch")
+checkbox13.grid(row=3, column=0)
 
-checkbox8_1 = CheckboxWithProcess(localization_frame, text="Node_Pump", node="easy_ware", script="node_pump0.py")
-checkbox8_1.grid(row=3, column=3)
 
-checkbox8_2 = CheckboxWithProcess(localization_frame, text="Node_Pump(distance)", node="easy_ware", script="node_pump.py")
-checkbox8_2.grid(row=3, column=4)
 
-checkbox8_3 = CheckboxWithProcess(localization_frame, text="Initial_position", node="easy_ware", script="initial_local_find.py")
-checkbox8_3.grid(row=3, column=5)
 
 # Frame for the path following checkboxes
 path_frame = create_colored_frame(window, "gray")
@@ -143,12 +164,15 @@ path_frame = create_colored_frame(window, "gray")
 path_title_label = tkinter.Label(path_frame, text="PathFollowing", font=("Arial", 14, "bold"))
 path_title_label.grid(row=0, column=1, sticky="w")
 
-checkbox11 = CheckboxWithProcess(path_frame, text="Target_selector", node="easy_ware", script="target_selector.py")
-checkbox11.grid(row=4, column=2)
+checkbox14 = CheckboxWithProcess(path_frame, text="Target_selector", node="easy_ware", script="target_selector.py")
+checkbox14.grid(row=4, column=0)
 
-checkbox12 = CheckboxWithProcess(path_frame, text="Pure_pursuit", node="easy_ware", script="purepursuit.py")
-checkbox12.grid(row=4, column=3)
+checkbox15 = CheckboxWithProcess(path_frame, text="Pure_pursuit", node="easy_ware", script="purepursuit.py")
+checkbox15.grid(row=4, column=1)
 
+
+checkbox16 = CheckboxWithProcess(path_frame, text="Easy_simulation(option)", node="easy_ware", script="easy_simulation.py")
+checkbox16.grid(row=4, column=1)
 
 # Frame for the  editor checkboxes
 editor_frame = create_colored_frame(window, "gray")
@@ -156,25 +180,13 @@ editor_frame = create_colored_frame(window, "gray")
 editor_title_label = tkinter.Label(editor_frame, text="Editor", font=("Arial", 14, "bold"))
 editor_title_label.grid(row=0, column=1, sticky="w")
 
-checkbox15 = CheckboxWithProcess(editor_frame, text="map_editor_program", node="easy_ware", script="map_editor_program_modify.py")
-checkbox15.grid(row=4, column=0)
-
-checkbox16 = CheckboxWithProcess(editor_frame, text="gps_tf_editor_program", node="easy_ware", script="gps_tf_control.py")
-checkbox16.grid(row=4, column=2)
-
-
-# Frame for the estimator checkboxes
-estimator_frame = create_colored_frame(window, "gray")
-
-estimator_title_label = tkinter.Label(estimator_frame, text="Estimator", font=("Arial", 14, "bold"))
-estimator_title_label.grid(row=0, column=1, sticky="w")
-
-checkbox17 = CheckboxWithProcess(estimator_frame, text="velocity_estimator", node="easy_ware", script="gps_velocity.py")
+checkbox17 = CheckboxWithProcess(editor_frame, text="map_editor_program", node="easy_ware", script="map_editor_program_modify.py")
 checkbox17.grid(row=4, column=0)
 
+checkbox18 = CheckboxWithProcess(editor_frame, text="gps_tf_editor_program", node="easy_ware", script="gps_tf_control.py")
+checkbox18.grid(row=4, column=2)
 
-checkbox18 = CheckboxWithProcess(estimator_frame, text="base_to_world", node="easy_ware", script="base_link_position.py")
-checkbox18.grid(row=6, column=0)
+
 
 
 # Frame for the test checkboxes
